@@ -11,6 +11,7 @@
 #
 from index.simplenode import SimpleNode
 from index.encryptednode import EncryptedNode
+from index.indexnode import IndexNode
 from crypto.ore import ORESMALL as ORE
 
 class AVLTree:
@@ -70,6 +71,8 @@ class AVLTree:
 		r = self.me.compare(x)
 		if r == 0:
 			# The element already exists in the tree
+			if self.nodeclass == IndexNode:
+				self.me._id = [x[1]] + self.me._id
 			return self.get_root()
 		elif r == 2:
 			# This element is bigger than x
@@ -77,7 +80,7 @@ class AVLTree:
 			if self.left is None:
 				# This is a leaf. Elevates it to a subtree and 
 				# add x to the left pointer
-				self.left = AVLTree(x)
+				self.left = AVLTree(x,nodeclass=self.nodeclass)
 				self.left.parent = self
 				self.left.update_balance()
 				return self.left.get_root()
@@ -89,7 +92,7 @@ class AVLTree:
 			if self.right is None:
 				# This is a leaf. Elevates it to a subtree and 
 				# add x to the right pointer
-				self.right = AVLTree(x)
+				self.right = AVLTree(x,nodeclass=self.nodeclass)
 				self.right.parent = self
 				self.right.update_balance()
 				return self.right.get_root()
@@ -103,7 +106,7 @@ class AVLTree:
 
 	def encrypt(self,ore):
 		ct = ore.encrypt(self.me.value)
-		self.me = EncryptedNode(ct,self.me.index)
+		self.me = EncryptedNode(ct,self.me._id)
 
 		if self.left is not None:
 			self.left.encrypt(ore)

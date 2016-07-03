@@ -6,11 +6,11 @@ from crypto.ore import ORESMALL as ORE
 
 class EncryptedNode(Node):
 	value = None
-	index = None
-	def __init__(self,value,index=None):
+	_id = None
+	def __init__(self,value,_id=None):
 		# super(SimpleNode,self).__init__(x)
 		self.value = value
-		self.index = index
+		self._id = _id
 		
 	def compare(self,x):
 		# Compares x with self
