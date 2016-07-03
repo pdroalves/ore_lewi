@@ -7,7 +7,7 @@ from simplenode import SimpleNode
 from encryptednode import EncryptedNode
 from random import randint,shuffle
 from ore import ORESMALL as ORE
-N = 1000
+N = 10000
 elements = range(1,N)
 # shuffle(elements)
 root = BinaryTree(elements[0])
@@ -16,13 +16,13 @@ print "Insertion..."
 for i,e in enumerate(elements[1:]):
 	# %timeit root.insert(e)
 	root = root.insert(e)
-# print "The tree has %d elements and is %s" % (root.count_nodes(), "balanced" if root.is_balanced() else "not balanced")
-# print "Searching..."
-# for i in elements[1:]:
-# 	# print i
-# 	assert root.find(i)
-# print "It passed!"
-# %timeit root.find(30)
+print "The tree has %d elements and is %s" % (root.count_nodes(), "balanced" if root.is_balanced() else "not balanced")
+print "Searching..."
+for i in elements[1:]:
+	# print i
+	assert root.find(i)
+print "It passed!"
+%timeit root.find(30)
 
 print "Time to test encryption..."
 elements = range(1,N)

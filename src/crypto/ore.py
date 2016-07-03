@@ -65,7 +65,6 @@ class ORESMALL():
 
         ctR = [r]
         for i in range(self.n):
-            print i
             ctR.append( 
                         (
                             self.cmp( pi.map_from(int(i)), y ) + 
