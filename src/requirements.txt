@@ -1,0 +1,3 @@
+git+https://github.com/attilaolah/intperm.py.git
+numpy
+pycrypto
