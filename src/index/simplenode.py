@@ -5,12 +5,12 @@ from node import Node
 
 class SimpleNode(Node):
 	value = None
-	balance = 0
-	parent = None
+	index = None
 	
-	def __init__(self,x):
+	def __init__(self,value,index=None):
 		# super(SimpleNode,self).__init__(x)
-		self.value = x
+		self.value = value
+		self.index = index
 	def compare(self,x):
 		# Compares x with self
 		# if super(SimpleNode,self).value == x:
