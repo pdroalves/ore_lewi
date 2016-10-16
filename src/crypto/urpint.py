@@ -49,9 +49,11 @@ class URPINT:
 
 	def map_to(self,x):
 		return self.perm_indexes[x]
+		#return x
 
 	def map_from(self,y):
 		return self.inv_perm_indexes[y]
+		#return y
 
 if __name__ == "__main__":
 

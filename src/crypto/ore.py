@@ -100,18 +100,18 @@ class ORESMALL():
         else:
             return 1
 
-# ore = ORESMALL()
-# sk = ore.keygen("oi")
-# ctA = ore.encrypt(sk, 9)
-# ctB = ore.encrypt(sk, 10)
-# ctC = ore.encrypt(sk, 11)
-# ctD = ore.encrypt(sk, 11)
+ore = ORESMALL()
+sk = ore.keygen("oi")
+ctA = ore.encrypt(9,sk)
+ctB = ore.encrypt(10,sk)
+ctC = ore.encrypt(11,sk)
+ctD = ore.encrypt(11,sk)
 
-# assert ORESMALL.compare(ctA[0], ctB[1]) == 2
-# assert ORESMALL.compare(ctB[0], ctB[1]) == 0
-# assert ORESMALL.compare(ctC[0], ctB[1]) == 1
-# assert ORESMALL.compare(ctB[0], ctA[1]) == 1
-# assert ORESMALL.compare(ctC[0], ctA[1]) == 1
-# assert ORESMALL.compare(ctD[0], ctB[1]) == 1
+assert ORESMALL.compare(ctA[0], ctB[1]) == 2
+assert ORESMALL.compare(ctB[0], ctB[1]) == 0
+assert ORESMALL.compare(ctC[0], ctB[1]) == 1
+assert ORESMALL.compare(ctB[0], ctA[1]) == 1
+assert ORESMALL.compare(ctC[0], ctA[1]) == 1
+assert ORESMALL.compare(ctD[0], ctB[1]) == 1
 
-# print "All tests passed!"
+print "All tests passed!"

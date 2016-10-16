@@ -5,7 +5,8 @@ import unittest
 from binarytree import BinaryTree
 from simplenode import SimpleNode
 from random import randint,shuffle
-from ore import ORESMALL as ORE
+# from ore import ORESMALL as ORE
+from oresbig import OREBIG as ORE
 
 RUNS = 80
 
