@@ -2,15 +2,17 @@
 #coding:utf-8
 
 from node import Node
-from ore import ORESMALL as ORE
+from crypto.ore import ORESMALL as ORE
 
 class EncryptedNode(Node):
 	value = None
-	def __init__(self,x):
+	_id = None
+	def __init__(self,value,_id=None):
 		# super(SimpleNode,self).__init__(x)
-		self.value = x
+		self.value = value
+		self._id = _id
 		
 	def compare(self,x):
 		# Compares x with self
 		# if super(SimpleNode,self).value == x:
-		return ORE.compare(x[0], self.value[1])
+		return ORE.compare(x, self.value)

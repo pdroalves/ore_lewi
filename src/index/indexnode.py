@@ -3,15 +3,20 @@
 
 from node import Node
 
-class SimpleNode(Node):
+class IndexNode(Node):
 	value = None
-	index = None
-	
-	def __init__(self,value,index=None):
+	_id = []
+
+	def __init__(self,value,_id):
 		# super(SimpleNode,self).__init__(x)
 		self.value = value
-		self.index = index
-	def compare(self,x):
+		self._id = self._id + (_id if _id in (list,tuple) else [_id])
+		
+	def compare(self,other):
+		if type(other) in (list,tuple):
+			x = other[0] # gambiarra
+		else:
+			x = other # gambiarra
 		# Compares x with self
 		# if super(SimpleNode,self).value == x:
 		if self.value == x:

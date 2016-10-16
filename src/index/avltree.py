@@ -4,16 +4,17 @@
 # About this class:
 # 
 # - It has two pointers: left and right
-# 	* left points to BinaryTree elements compared as lower than the root
-# 	* right points to BinaryTree elements compared as bigger than the root
+# 	* left points to AVLTree elements compared as lower than the root
+# 	* right points to AVLTree elements compared as bigger than the root
 # - The element "me" is the real content of this node
 # - This doesn't build a balanced tree
 #
-from simplenode import SimpleNode
-from encryptednode import EncryptedNode
-from ore import ORESMALL as ORE
+from index.simplenode import SimpleNode
+from index.encryptednode import EncryptedNode
+from index.indexnode import IndexNode
+from crypto.ore import ORESMALL as ORE
 
-class BinaryTree:
+class AVLTree:
 	left = None
 	right = None
 	me = None
@@ -23,8 +24,8 @@ class BinaryTree:
 	parent = None
 
 	def __init__(self,me,nodeclass=SimpleNode):
-		self.me = nodeclass(me)
-		self.mecopy = nodeclass(me)
+		self.me = nodeclass(me[0],me[1])
+		self.mecopy = nodeclass(me[0],me[1])
 		self.nodeclass = nodeclass
 		parent = None
 
@@ -70,6 +71,8 @@ class BinaryTree:
 		r = self.me.compare(x)
 		if r == 0:
 			# The element already exists in the tree
+			if self.nodeclass == IndexNode:
+				self.me._id = [x[1]] + self.me._id
 			return self.get_root()
 		elif r == 2:
 			# This element is bigger than x
@@ -77,7 +80,7 @@ class BinaryTree:
 			if self.left is None:
 				# This is a leaf. Elevates it to a subtree and 
 				# add x to the left pointer
-				self.left = BinaryTree(x)
+				self.left = AVLTree(x,nodeclass=self.nodeclass)
 				self.left.parent = self
 				self.left.update_balance()
 				return self.left.get_root()
@@ -89,7 +92,7 @@ class BinaryTree:
 			if self.right is None:
 				# This is a leaf. Elevates it to a subtree and 
 				# add x to the right pointer
-				self.right = BinaryTree(x)
+				self.right = AVLTree(x,nodeclass=self.nodeclass)
 				self.right.parent = self
 				self.right.update_balance()
 				return self.right.get_root()
@@ -103,7 +106,7 @@ class BinaryTree:
 
 	def encrypt(self,ore):
 		ct = ore.encrypt(self.me.value)
-		self.me = EncryptedNode(ct)
+		self.me = EncryptedNode(ct,self.me._id)
 
 		if self.left is not None:
 			self.left.encrypt(ore)

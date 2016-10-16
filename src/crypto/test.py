@@ -2,14 +2,14 @@
 
 # import sys
 # sys.setrecursionlimit(100000)
-from binarytree import BinaryTree
-from simplenode import SimpleNode
-from encryptednode import EncryptedNode
+from index.binarytree import BinaryTree
+from index.simplenode import SimpleNode
+from index.encryptednode import EncryptedNode
 from random import randint,shuffle
-from ore import ORESMALL as ORE
-N = 10000
+from crypto.ore import ORESMALL as ORE
+N = 1000
 elements = range(1,N)
-# shuffle(elements)
+shuffle(elements)
 root = BinaryTree(elements[0])
 
 print "Insertion..."

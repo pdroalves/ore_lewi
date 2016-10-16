@@ -57,7 +57,7 @@ class ORESMALL():
 
         pi.refresh()
 
-        r = numpy.random.bytes(128)
+        r = numpy.random.bytes(128).encode("hex")
 
     	bits = bin(y).partition("b")[2]
 
