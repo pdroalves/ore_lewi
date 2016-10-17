@@ -1,4 +1,4 @@
-# Implementation of the ORE scheme proposed by Kevin Lewi 
+# Implementation of the ORE scheme proposed by Lewi and Wu
 
 [University of Campinas](http://www.unicamp.br), [Institute of Computing](http://www.ic.unicamp.br), Brazil.
 
