@@ -14,7 +14,7 @@ A python implementation of the ORE scheme proposed by Lewi and Wu. Our focus is 
 
 Lewi, K., & Wu, D. J. (2016). Order-Revealing Encryption: New Constructions, Applications, and Lower Bounds.
 
-# Licensing
+## Licensing
 
 This code is released under a GPLv3 license.
 
